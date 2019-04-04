@@ -6,10 +6,21 @@ describe DockingStation do
 
     it { is_expected.to respond_to(:bike) }
 
+
+
+
+  describe '#dock' do
+    it "throws 'no space available' error" do
+      subject.dock(Bike.new)
+      expect{ subject.dock(Bike.new) }.to raise_error("No space available")
+    end
+
     it 'docks something' do
       bike = Bike.new
       expect(subject.dock(bike)).to eq bike
     end
+
+  end
 
     describe '#release_bike' do
       it "throws 'no bike available' error when there is no bike" do
