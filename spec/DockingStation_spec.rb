@@ -6,7 +6,18 @@ describe DockingStation do
 
     it { is_expected.to respond_to(:bikes) }
 
+  describe '#full?' do
+    it 'checks if docking station is at max capacity of 20' do
+      20.times { subject.dock(Bike.new) }
+      expect(subject.full?).to be true
+    end
+  end
 
+  describe '#empty?' do
+    it 'checks to see if the docking station has any docked bikes' do
+    expect(subject.empty?).to be true
+  end
+  end
 
 
   describe '#dock' do
